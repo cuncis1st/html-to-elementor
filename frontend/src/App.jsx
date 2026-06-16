@@ -37,11 +37,11 @@ const EXAMPLE_HTML = `<section style="background-color:#f8fafc; padding:60px 0">
 
 function Badge({ children, variant = 'default' }) {
   const styles = {
-    default:  'bg-slate-700 text-slate-300',
-    success:  'bg-emerald-900/60 text-emerald-300 border border-emerald-700',
-    warning:  'bg-amber-900/60 text-amber-300 border border-amber-700',
-    info:     'bg-blue-900/60 text-blue-300 border border-blue-700',
-    ai:       'bg-purple-900/60 text-purple-300 border border-purple-700',
+    default: 'bg-slate-700 text-slate-300',
+    success: 'bg-emerald-900/60 text-emerald-300 border border-emerald-700',
+    warning: 'bg-amber-900/60 text-amber-300 border border-amber-700',
+    info: 'bg-blue-900/60 text-blue-300 border border-blue-700',
+    ai: 'bg-purple-900/60 text-purple-300 border border-purple-700',
   }
   return (
     <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${styles[variant]}`}>
@@ -51,13 +51,13 @@ function Badge({ children, variant = 'default' }) {
 }
 
 export default function App() {
-  const [html, setHtml]             = useState('')
-  const [result, setResult]         = useState(null)
-  const [loading, setLoading]       = useState(false)
-  const [error, setError]           = useState(null)
-  const [useClaude, setUseClaude]   = useState(false)
+  const [html, setHtml] = useState('')
+  const [result, setResult] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [useClaude, setUseClaude] = useState(false)
   const [asTemplate, setAsTemplate] = useState(false)
-  const [copied, setCopied]         = useState(false)
+  const [copied, setCopied] = useState(false)
 
   const convert = useCallback(async () => {
     if (!html.trim()) return
@@ -66,7 +66,7 @@ export default function App() {
     setResult(null)
 
     try {
-      const endpoint = asTemplate ? '/convert/template' : '/convert'
+      const endpoint = asTemplate ? '/api/convert/template' : '/api/convert'
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
